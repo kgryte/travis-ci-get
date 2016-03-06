@@ -48,6 +48,16 @@ The `function` accepts the following `options`:
 *	__token__: Travis CI [access token][travis-token].
 *	__accept__: media type. Default: `'application/vnd.travis-ci.2+json'`.
 
+To [authenticate][travis-token] with an endpoint, set the [`token`][travis-token] option.
+
+``` javascript
+var opts = {
+	'token': 'tkjorjk34ek3nj4!'
+};
+
+request( opts, onResponse );
+```
+
 To specify a particular resource [endpoint][travis-api], set the `pathname` option.
 
 ``` javascript
@@ -58,11 +68,13 @@ var opts = {
 request( opts, onResponse );
 ```
 
-To [authenticate][travis-token] with an endpoint, set the [`token`][travis-token] option.
+For [endpoints][travis-api] supporting query parameters, set the `query` option.
 
 ``` javascript
 var opts = {
-	'token': 'tkjorjk34ek3nj4!'
+	'token': 'tkjorjk34ek3nj4!',
+	'pathname': '/repos',
+	'query': 'active=true'
 };
 
 request( opts, onResponse );
