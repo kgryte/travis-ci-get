@@ -74,7 +74,7 @@ tape( 'if a `port` option is not specified and the protocol is `https`, the defa
 	var fcn;
 
 	factory = proxyquire( './../lib/factory.js', {
-		'./resolve.js': resolve
+		'./query.js': query
 	});
 
 	opts = getOpts();
@@ -84,7 +84,7 @@ tape( 'if a `port` option is not specified and the protocol is `https`, the defa
 	fcn = factory( opts, noop );
 	fcn();
 
-	function resolve( opts ) {
+	function query( opts ) {
 		t.equal( opts.port, 443, 'sets the default port to `443` for HTTPS' );
 		t.end();
 	}
@@ -96,7 +96,7 @@ tape( 'if a `port` option is not specified and the protocol is `http`, the defau
 	var fcn;
 
 	factory = proxyquire( './../lib/factory.js', {
-		'./resolve.js': resolve
+		'./query.js': query
 	});
 
 	opts = getOpts();
@@ -106,7 +106,7 @@ tape( 'if a `port` option is not specified and the protocol is `http`, the defau
 	fcn = factory( opts, noop );
 	fcn();
 
-	function resolve( opts ) {
+	function query( opts ) {
 		t.equal( opts.port, 80, 'sets the default port to `80` for HTTP' );
 		t.end();
 	}
@@ -118,14 +118,14 @@ tape( 'function returns a function which returns an error to a provided callback
 	var get;
 
 	factory = proxyquire( './../lib/factory.js', {
-		'./resolve.js': resolve
+		'./query.js': query
 	});
 
 	opts = getOpts();
 	get = factory( opts, done );
 	get();
 
-	function resolve( opts, clbk ) {
+	function query( opts, clbk ) {
 		setTimeout( onTimeout, 0 );
 		function onTimeout() {
 			clbk( new Error( 'beep' ) );
@@ -146,7 +146,7 @@ tape( 'function returns a function which returns response data to a provided cal
 	var get;
 
 	factory = proxyquire( './../lib/factory.js', {
-		'./resolve.js': resolve
+		'./query.js': query
 	});
 
 	expected = results;
@@ -155,7 +155,7 @@ tape( 'function returns a function which returns response data to a provided cal
 	get = factory( opts, done );
 	get();
 
-	function resolve( opts, clbk ) {
+	function query( opts, clbk ) {
 		setTimeout( onTimeout, 0 );
 		function onTimeout() {
 			clbk( null, results );
