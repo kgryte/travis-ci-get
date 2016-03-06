@@ -25,7 +25,7 @@ Retrieves resources from a [Travis CI API][travis-api] endpoint.
 
 ``` javascript
 var opts = {
-	'pathname': '/repos/kgryte/utils-copy.json'
+	'pathname': '/repos/kgryte/utils-copy'
 };
 
 request( opts, onResponse );
