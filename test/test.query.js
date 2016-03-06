@@ -62,7 +62,7 @@ tape( 'function returns response data to a provided callback', function test( t 
 	function request( opts, clbk ) {
 		setTimeout( onTimeout, 0 );
 		function onTimeout() {
-			clbk( null, results );
+			clbk( null, {}, results );
 		}
 	}
 
