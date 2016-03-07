@@ -110,7 +110,7 @@ request( opts, onResponse );
 *
 * @private
 * @param {Error|Null} error - error object
-* @param {Array[]} data - response data
+* @param {Object[]|Object} data - response data
 * @returns {Void}
 */
 function onResponse( error, data ) {
